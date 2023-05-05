@@ -4,12 +4,14 @@ body {
   
  } 
  
- .data-header, h1{
+ .table, h1{
    color:rgb(226, 165, 12)
    
  }
- .data-header{
+ .row{
    text-align: center;
+   background-color: aliceblue;
+   color: black;
  }
  
  .input-group md-3{

@@ -1,35 +1,41 @@
-import React from "react";
-import axios from "axios"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function CharacterSearch() {
-  // const [input, setInput]=useState()
- 
- const handeleClick =(e)=>{
- axios.get("https://swapi.dev/api/planets/").then((response)=>{
-  console.log(response.data)
-})
+  const [search, setSearch] = useState(null);
+  console.log(search);
 
- }
- 
- 
+  useEffect((e) => {
+    axios.get("https://swapi.dev/api/people/").then((response) => {
+      console.log(response.data);
+      setSearch(response.data);
+    });
+  }, []);
+
+  const handleOnClick = (e) => {
+     setSearch("https://swapi.dev/api/people/");
+
+    e.preventDefault();
+  };
+
   return (
-      <div>
+    <div>
       <header className="header">
         <h1>Star Wars API </h1>
       </header>
-      <div className="input-group mb-3" >
+      <div className="input-group mb-3">
         <input
           type="text"
           className="form-control"
-          placeholder="Welcome to Star Wars World! What are you searching for?"
+          placeholder="Welcome to Star Wars World!"
           // aria-label="Recipient's username"
           aria-describedby="button-addon2"
         ></input>
         <button
           className="btn btn-outline-secondary"
-          onClick={handeleClick}
           type="button"
           id="button-addon2"
+          onClick={handleOnClick}
         >
           Request
         </button>
