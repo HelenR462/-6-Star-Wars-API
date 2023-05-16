@@ -1,34 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Pagination() {
+  const [pageNumber, setPageNumber] = useState([]);
+  // console.log(pageNumber);
+  const handlePageChange = (e) => {
+    setPageNumber(
+      // if(pageNumber )
+    );
+  };
+
   return (
     <div>
-      <button
-        className="btn btn-outline-secondary"
-        type="button"
-        id="button-addon2"
-      >
-        Previous
-      </button>
-    
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>10</button>
-   
-      <button
-        className="btn btn-outline-secondary"
-        type="button"
-        id="button-addon2"
-      >
-        Next....
-      </button>
+      <nav aria-label="Page navigation example">
+        <ul className="pagination" onChange={handlePageChange}>
+          <li className="page-item">
+            <a className="page-link" href="#prev">
+              Previous
+            </a>
+          </li>
+
+          <li className="page-item">
+            <a className="page-link" href="#1">
+              1
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#2">
+              2
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#3">
+              3
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#1">
+              4
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#2">
+              5
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#3">
+              6
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#3">
+              7
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#1">
+              8
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#2">
+              9
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#3">
+              10
+            </a>
+          </li>
+
+          <li className="page-item">
+            <a className="page-link" href="#next">
+              Next
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 }
