@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function CharacterData({ results, dataList }) {
+function CharacterData({result}) {
   const [data, setData] = useState([]);
+console.log(data)
+
 
   useEffect(() => {
     axios.get("https://swapi.dev/api/people").then((response) => {
-      console.log(response);
+      console.log(response.data);
       setData(response.data.result);
     });
   }, []);
 
   useEffect(() => {
     axios.get("https://swapi.dev/api/planets").then((response) => {
-      console.log(response);
+      console.log(response.data);
       setData(response.data.result);
     });
   }, []);
 
   useEffect(() => {
     axios.get("https://swapi.dev/api/species").then((response) => {
-      console.log(response);
+      console.log(response.data);
       setData(response.data.result);
     });
   }, []);
@@ -37,21 +39,29 @@ function CharacterData({ results, dataList }) {
           <th scope="col">Species</th>
         </tr>
       </thead>
-      <tbody className="display-chart">
-        <tr>{dataList}</tr>
+      <tbody //className="display-chart"
+       
+        >
+<tr>
+  {result}
+</tr>
 
-        {/* {data.results.map((result) => {
-         dataList.push( */}
-        {/* <tr key={data.index}>
-              <td>{results.name}</td>
-              <td>{dataList.birth_year}</td>
+{/*   
+        {data.results.map((result,index) => {
+          return(
+         dataList.push( 
+       <tr key={index}>
+               <td>{data.id}</td>
+              <td>{data.name}</td>
+              <td>{data.birth_year}</td>
               <td>{data.height}</td>
               <td>{data.mass}</td>
               <td>{data.homeworld}</td>
               <td>{data.species}</td>
-            </tr> */}
-        {/* );
-        })} */}
+            </tr> 
+         )
+        );
+     })}  */}
       </tbody>
     </table>
   );

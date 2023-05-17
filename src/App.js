@@ -17,34 +17,33 @@ function App() {
       height: "",
       mass: "",
       homeworld: "",
-      species: "",
-    },
+      species: []
+    }
   ]);
-  console.log(results);
 
   useEffect(() => {
-    axios
-      .get("https://swapi/api/people")
-      .then((response) => setResults(response.results.result));
+    axios.get("https://swapi/api/people").then((response) => {
+      console.log(response.data);
+      setResults(response.data.results);
+    });
   }, []);
 
   const dataList = [];
-  results.map((result) => {
-    return(
-    dataList.push(
-      <tbody>
-        <tr key={results.id}>
-          <td>{results.name}</td>
-          <td>{results.birth_year}</td>
-          <td>{results.height}</td>
-          <td>{results.mass}</td>
-          <td>{results.homeworld}</td>
-          <td>{results.species}</td>
+  <tbody>
+    {results.map((result, index) => {
+      return dataList.push(
+        <tr key={index}>
+          <td>{result.id}</td>
+          <td>{result.name}</td>
+          <td>{result.birth_year}</td>
+          <td>{result.height}</td>
+          <td>{result.mass}</td>
+          <td>{result.homeworld}</td>
+          <td>{result.species}</td>
         </tr>
-      </tbody>
-    )
-    );
-  });
+      );
+    })}
+  </tbody>;
 
   return (
     <div>

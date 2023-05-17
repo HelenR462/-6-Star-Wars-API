@@ -60,3 +60,8 @@ body {
   padding: 2px 10px;
  
  }
+
+ .pagenation{
+  display:flex;
+  justify-content: center;
+ }
