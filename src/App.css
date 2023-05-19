@@ -21,6 +21,7 @@ body {
    background-color: aliceblue;
    color: rgb(0, 0, 0);
    padding:5px;
+   margin-bottom: 20px;
  }
  
  .display-chart{
@@ -31,15 +32,16 @@ body {
  .input-group md-3{
   display: flex;
    position: relative; 
-  align-content: center;
- 
- 
+   align-content: center;
+   justify-content: center;
+   width:75%;
+    
  }
 
  .data-item{
   background-color: aliceblue;
-  color:black;
-  column-gap: 2px;
+  /* color:black; */
+  column-gap: 3px;
  }
 
  li{
@@ -50,18 +52,30 @@ body {
 
 .page-link{
   text-decoration: none;
-  font-size:medium;
+  font-size:large;
+  color: rgb(68, 67, 67);
+ 
+}
 
+td{
+  width:50%;
+ align-content: center;
+ justify-content: center;
+ color:rgb(112, 112, 112);
+ padding: 2px 10px;
+ background-color: rgb(209, 210, 212);
 }
 
  .page-item{
   display:inline-flex;
   text-decoration: none;
   padding: 2px 10px;
- 
+  justify-content: center;
+
  }
 
  .pagenation{
   display:flex;
   justify-content: center;
+  width:100%
  }

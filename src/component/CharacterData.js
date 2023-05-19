@@ -1,31 +1,30 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 
-function CharacterData({result}) {
+import React, { useState} from "react";
+
+const dataItems = [{
+  
+  name: "LukeSkyWalker",
+  birth_year: "19BBY",
+  height: "172",
+  mass: "77",
+  homeworld: "https://swapi.dev/api/planets/1/",
+  species: [],
+},
+
+{
+  name: "Owen Lars",
+  birth_year: "52BBY",
+  height: "178",
+  mass: "120",
+  homeworld: "https://swapi.dev/api/planets/1/",
+  species: [],
+}
+];
+
+function CharacterData({ results }) {
   const [data, setData] = useState([]);
-console.log(data)
 
-
-  useEffect(() => {
-    axios.get("https://swapi.dev/api/people").then((response) => {
-      console.log(response.data);
-      setData(response.data.result);
-    });
-  }, []);
-
-  useEffect(() => {
-    axios.get("https://swapi.dev/api/planets").then((response) => {
-      console.log(response.data);
-      setData(response.data.result);
-    });
-  }, []);
-
-  useEffect(() => {
-    axios.get("https://swapi.dev/api/species").then((response) => {
-      console.log(response.data);
-      setData(response.data.result);
-    });
-  }, []);
+  
 
   return (
     <table className="table table-border">
@@ -39,29 +38,19 @@ console.log(data)
           <th scope="col">Species</th>
         </tr>
       </thead>
-      <tbody //className="display-chart"
-       
-        >
-<tr>
-  {result}
-</tr>
 
-{/*   
-        {data.results.map((result,index) => {
-          return(
-         dataList.push( 
-       <tr key={index}>
-               <td>{data.id}</td>
-              <td>{data.name}</td>
-              <td>{data.birth_year}</td>
-              <td>{data.height}</td>
-              <td>{data.mass}</td>
-              <td>{data.homeworld}</td>
-              <td>{data.species}</td>
-            </tr> 
-         )
-        );
-     })}  */}
+      <tbody>
+        
+        {dataItems.map((dataItem, index) => ( 
+          <tr key={index}>
+            <td>{dataItem.name}</td>
+            <td>{dataItem.birth_year}</td>
+            <td>{dataItem.height}</td>
+            <td>{dataItem.mass}</td>
+            <td>{dataItem.homeworld}</td>
+            <td>{dataItem.species}</td>
+          </tr>
+      ))} 
       </tbody>
     </table>
   );

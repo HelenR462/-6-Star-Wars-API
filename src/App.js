@@ -9,41 +9,34 @@ import "./App.css";
 // method=""  get, delete, head, post, put and patch - required */
 // url="" url endpoint to be requested - required */
 
+
+
 function App() {
-  const [results, setResults] = useState([
-    {
-      id: Math.random(),
-      name: "",
-      height: "",
-      mass: "",
-      homeworld: "",
-      species: []
-    }
-  ]);
+  const [results, setResults] = useState([])
+//  console.log("results", results)
+
+    
 
   useEffect(() => {
-    axios.get("https://swapi/api/people").then((response) => {
-      console.log(response.data);
-      setResults(response.data.results);
+    axios.get("https://swapi.dev/api/people").then((response) => {
+      // console.log(response.data);
+      setResults(response.data.result);
     });
   }, []);
 
-  const dataList = [];
-  <tbody>
-    {results.map((result, index) => {
-      return dataList.push(
-        <tr key={index}>
-          <td>{result.id}</td>
-          <td>{result.name}</td>
-          <td>{result.birth_year}</td>
-          <td>{result.height}</td>
-          <td>{result.mass}</td>
-          <td>{result.homeworld}</td>
-          <td>{result.species}</td>
-        </tr>
-      );
-    })}
-  </tbody>;
+  useEffect(() => {
+    axios.get("https://swapi.dev/api/planets").then((response) => {
+      // console.log(response.data);
+      setResults(response.data.result);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get("https://swapi.dev/api/species").then((response) => {
+      // console.log(response.data);
+      setResults(response.data.result);
+    });
+  }, []);
 
   return (
     <div>

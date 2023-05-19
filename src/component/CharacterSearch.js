@@ -1,18 +1,12 @@
 import React from "react";
-// import axios from "axios";
+ 
 
-function CharacterSearch({dataList}) {
-  // const [search, setSearch] = useState(null);
-  // console.log(search);
-
-  // useEffect((e) => {
-  //   axios.get("https://swapi/api/people").then((response) => {
-  //     setSearch(response.search);
-  //   });
-  // }, []);
-
+function CharacterSearch({setResults,dataList}) {
+ 
+ 
   const handleOnClick = (e) => {
     e.preventDefault();
+    setResults()
   };
 
   return (
@@ -27,7 +21,7 @@ function CharacterSearch({dataList}) {
           placeholder="Welcome to Star Wars World!"
           // aria-label="Recipient's username"
           aria-describedby="button-addon2"
-          value={dataList}
+         
         ></input>
         <button
           className="btn btn-outline-secondary"

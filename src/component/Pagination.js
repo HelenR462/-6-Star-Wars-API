@@ -3,20 +3,24 @@ import React, { useState } from "react";
 
 function Pagination() {
   const [pages, setPages] = useState([]);
-  const [currentPage, setCurrentPage]= useState(0)
+  const [currentPage, setCurrentPage]= useState([])
+
+  // "count": 82,
+  // "next": "https://swapi.dev/api/people/?page=2",
+  // "previous": null,
 
 
-  const handleOnClick = (e) => {
-    setPages(e.target.value);
-    setCurrentPage(currentPage-1)
+  const handleOnClick = () => {
+    const pageCount = pages? Math.ceil(pages.length) :0;
+    if(  pageCount < 1 ){
+      return null; 
+    }
+  setCurrentPage(currentPage +1)
+  setPages(pageCount)
   };
 
-  const pageCount = pages? Math.ceil(pages.length) :0;
-  if(  pageCount < 1 ){
-    return null; 
-  }
-
-const pageNumbers = Range(1, pageCount + 1)
+  
+// const pageNumbers = Range(1, pageCount + 1)
   
   return (
     <div>
@@ -29,17 +33,27 @@ const pageNumbers = Range(1, pageCount + 1)
               Previous
             </a>
           </li>
-              {
+              {/* {
                  pageNumbers.map((pageNumber)=>(
-                  <li className="page-link">{pages}</li>
+                  <li className="page-link">{pageNumbers}</li>
                  ))
-              }
+              } */}
 
-          {/* < className="page-item">
+          <li className="page-item">
             <a className="page-link" href="#1">
               1
             </a>
-           </li> */}
+           </li>
+           <li className="page-item">
+            <a className="page-link" href="#1">
+              2
+            </a>
+           </li>
+           <li className="page-item">
+            <a className="page-link" href="#1">
+             3
+            </a>
+           </li>
 
           <li className="page-item">
             <a className="page-link" href="#next">
