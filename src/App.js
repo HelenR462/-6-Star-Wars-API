@@ -9,39 +9,31 @@ import "./App.css";
 // method=""  get, delete, head, post, put and patch - required */
 // url="" url endpoint to be requested - required */
 
-
-
 function App() {
-  const [results, setResults] = useState([])
-//  console.log("results", results)
-
-    
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     axios.get("https://swapi.dev/api/people").then((response) => {
-      // console.log(response.data);
-      setResults(response.data.result);
+      setCharacters(response.data.results);
     });
   }, []);
 
   useEffect(() => {
     axios.get("https://swapi.dev/api/planets").then((response) => {
-      // console.log(response.data);
-      setResults(response.data.result);
+      setCharacters(response.data.results);
     });
   }, []);
 
   useEffect(() => {
     axios.get("https://swapi.dev/api/species").then((response) => {
-      // console.log(response.data);
-      setResults(response.data.result);
+      setCharacters(response.data.results);
     });
   }, []);
 
   return (
     <div>
       <CharacterSearch />
-      <CharacterData results={results} />
+      <CharacterData characters={characters} />
       <Pagination />
     </div>
   );

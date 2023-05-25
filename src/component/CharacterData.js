@@ -1,31 +1,18 @@
+import React from "react";
 
-import React, { useState} from "react";
+const homeworld = [
+  {
+    name: "Tatooine",
+  }
+]
 
-const dataItems = [{
-  
-  name: "LukeSkyWalker",
-  birth_year: "19BBY",
-  height: "172",
-  mass: "77",
-  homeworld: "https://swapi.dev/api/planets/1/",
-  species: [],
-},
-
-{
-  name: "Owen Lars",
-  birth_year: "52BBY",
-  height: "178",
-  mass: "120",
-  homeworld: "https://swapi.dev/api/planets/1/",
-  species: [],
-}
+  const species = [
+  {
+    name: "Human",
+  },
 ];
 
-function CharacterData({ results }) {
-  const [data, setData] = useState([]);
-
-  
-
+function CharacterData({ characters }) {
   return (
     <table className="table table-border">
       <thead>
@@ -40,17 +27,16 @@ function CharacterData({ results }) {
       </thead>
 
       <tbody>
-        
-        {dataItems.map((dataItem, index) => ( 
+        {characters.map((dataItems, species, homeworld, index) => (
           <tr key={index}>
-            <td>{dataItem.name}</td>
-            <td>{dataItem.birth_year}</td>
-            <td>{dataItem.height}</td>
-            <td>{dataItem.mass}</td>
-            <td>{dataItem.homeworld}</td>
-            <td>{dataItem.species}</td>
+            <td>{dataItems.name}</td>
+            <td>{dataItems.birth_year}</td>
+            <td>{dataItems.height}</td>
+            <td>{dataItems.mass}</td>
+            <td>{homeworld.results}</td>
+            <td>{species.name}</td> 
           </tr>
-      ))} 
+        ))}
       </tbody>
     </table>
   );

@@ -1,12 +1,9 @@
 import React from "react";
- 
 
-function CharacterSearch({setResults,dataList}) {
- 
- 
+function CharacterSearch({ setResults, dataList }) {
   const handleOnClick = (e) => {
     e.preventDefault();
-    setResults()
+    setResults();
   };
 
   return (
@@ -14,14 +11,11 @@ function CharacterSearch({setResults,dataList}) {
       <header className="header">
         <h1>Star Wars API </h1>
       </header>
-      <div className="input-group mb-3">
+      <div className="input-group input-group-lg">
         <input
           type="text"
           className="form-control"
           placeholder="Welcome to Star Wars World!"
-          // aria-label="Recipient's username"
-          aria-describedby="button-addon2"
-         
         ></input>
         <button
           className="btn btn-outline-secondary"
