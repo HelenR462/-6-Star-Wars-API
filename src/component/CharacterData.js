@@ -1,18 +1,11 @@
 import React from "react";
 
-const homeworld = [
-  {
-    name: "Tatooine",
-  }
-]
+// const homeworld = {name: "Tatooine" }
+// const species = {name: "Human" }
+// ;
 
-  const species = [
-  {
-    name: "Human",
-  },
-];
 
-function CharacterData({ characters }) {
+function characterData({ characters}) {
   return (
     <table className="table table-border">
       <thead>
@@ -27,14 +20,14 @@ function CharacterData({ characters }) {
       </thead>
 
       <tbody>
-        {characters.map((dataItems, species, homeworld, index) => (
+        {characters.map((character, index) => (
           <tr key={index}>
-            <td>{dataItems.name}</td>
-            <td>{dataItems.birth_year}</td>
-            <td>{dataItems.height}</td>
-            <td>{dataItems.mass}</td>
-            <td>{homeworld.results}</td>
-            <td>{species.name}</td> 
+            <td>{character.name}</td>
+            <td>{character.birth_year}</td>
+            <td>{character.height}</td>
+            <td>{character.mass}</td>
+            <td>{character.homeworld}</td>
+            <td>{character.species}</td>
           </tr>
         ))}
       </tbody>
@@ -42,4 +35,4 @@ function CharacterData({ characters }) {
   );
 }
 
-export default CharacterData;
+export default characterData;
