@@ -4,9 +4,9 @@ function Pagination({ Characters }) {
   const [charList, setCharList] = useState([]);
   const [pageNums, setPageNums] = useState(1);
   const [currentPage, setCurrentPage] = useState();
-  console.log(charList);
-  console.log(pageNums);
-  console.log(currentPage);
+  // console.log(charList);
+  // console.log(pageNums);
+  // console.log(currentPage);
 
   const handleOnClick = () => {
     // const pageCount = Math.ceil(pages/listPerPage) :0;

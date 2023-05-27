@@ -12,50 +12,33 @@ import "./App.css";
 
 function App() {
   const [characters, setCharacters] = useState([]);
- 
 
   useEffect(() => {
-    axios.get("https://swapi.dev/api/people")
-    .then((response) => {
+    axios.get("https://swapi.dev/api/people").then((response) => {
       // loop through each character
       for (let index = 0; index < response.data.results.length; index++) {
         const character = response.data.results[index];
+
         // console.log(character)
-     
 
         //get the homeworld name
-          const homeworldName = axios.get("https://swapi.dev/api/planets")
-          .then((response)=> {
-            setCharacters(response.data.result.name)
-          }, [])
-          console.log(homeworldName)
+        axios.get(character.homeworld).then((response) => {
+          console.log(response.data.name);
+          characters.homeworld = response.data.name;
+        }, []);
 
-           // assign the character's homeworldName property
-             character.homeworldName =  homeworldName.data.results;
-       
-     
-             // get the species name
-       const species = response.data.name
-       // assign the character's speciesName property
-       character.speciesName = "species"
-      //  "TBD2";
-       
+        axios.get(character.species).then((response) => {
+          console.log(response.data.name);
+          character.speciesName = response.data.name;
+        }, []);
       }
       setCharacters(response.data.results);
     });
   }, []);
 
   useEffect(() => {
-    axios.get("https://swapi.dev/api/planets").then((response) => {
-      setCharacters(response.data.results);
-    });
-  }, []);
-
-  useEffect(() => {
-    axios.get("https://swapi.dev/api/species").then((response) => {
-      setCharacters(response.data.results);
-    });
-  }, []);
+    console.log(["characters", characters]);
+  }, [characters]);
 
   return (
     <div>
