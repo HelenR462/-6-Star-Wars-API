@@ -36,6 +36,10 @@ body {
     
  }
 
+input:focus::placeholder{
+  color:transparent;
+ }
+
  .data-item{
   background-color: aliceblue;
   /* color:black; */

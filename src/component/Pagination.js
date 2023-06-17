@@ -1,41 +1,46 @@
 import React, { useState } from "react";
 
-function Pagination({ Characters }) {
-  const [charList, setCharList] = useState([]);
-  const [pageNums, setPageNums] = useState(1);
-  const [currentPage, setCurrentPage] = useState();
+function Pagination() {
+  const [currentPage, setCurrentPage] = useState(1);
   // console.log(charList);
   // console.log(pageNums);
   // console.log(currentPage);
+  const [pageCount, setPageCount] = useState([]);
+  const displayedPerPage = 10;
 
-  const handleOnClick = () => {
-    // const pageCount = Math.ceil(pages/listPerPage) :0;
-    // if(  pageCount < 1 ){
-    //   return null;
-    // }
-    setCurrentPage(charList.length === 10);
-    setPageNums(charList.length > 10);
-    setCharList(charList / 10);
-  };
+  const lastPage = currentPage * displayedPerPage;
+  const firstPage = lastPage - displayedPerPage;
+  const totalPages = pageCount.slice(firstPage, lastPage);
 
+ let pages =[];
+  for (let num = 1 ; num <= Math.ceil(totalPages/displayedPerPage); num++) {
+    pages.push(num)
+  }
+ 
+ 
+
+ 
   return (
     <div>
       <nav aria-label="Page navigation example">
-        <ul className="pagination" onClick={handleOnClick} value>
+        <ul
+          className="pagination"
+        
+        >
           <li className="page-item">
             <a className="page-link" href="#prev">
               Previous
             </a>
           </li>
-
-          {/* {
-               pageNums.map((pageNum, index)=> {
-                  return(
-                    <CharacterData key={index}pageNum={pageNum}/>
-                  )
-              })} */}
-
+         
+         
           <li className="page-item">
+            <a className="page-link" href="#1">
+           {pageCount}
+            </a>
+          </li>
+
+           <li className="page-item">
             <a className="page-link" href="#1">
               1
             </a>
@@ -49,7 +54,7 @@ function Pagination({ Characters }) {
             <a className="page-link" href="#3">
               3
             </a>
-          </li>
+          </li> 
 
           <li className="page-item">
             <a className="page-link" href="#next">
