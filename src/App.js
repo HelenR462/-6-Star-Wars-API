@@ -23,7 +23,7 @@ function App() {
       setloading(true);
 
       console.log("COUNT: ", response.data.count);
-      setCount(response.data.count.length);
+      setCount(response.data.count);
 
       for (let index = 0; index < response.data.results.length; index++) {
         const character = response.data.results[index];
@@ -97,6 +97,7 @@ function App() {
         speciesName={speciesName}
       />
       <Pagination count={count} 
+      
     />
     </div>
   );

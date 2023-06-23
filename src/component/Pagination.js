@@ -4,20 +4,27 @@ function Pagination({ count }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   console.log("currentPage :", currentPage);
-  const [perPageCount, setPerPageCount] = useState(10);
+  const [perPageCount] = useState(10);
 
   const lastPage = currentPage * perPageCount;
   const firstPage = lastPage - perPageCount;
   const totalPages = Math.ceil(count/ perPageCount);
 
-  let pages = [...Array(totalPages + 1).keys()].slice(1);
+
+  const handleOnClick=()=>{
+    pages(Number)
+ }
+
+
+  let pages = []
   // console.log("pages: ", pages);
   // console.log("totalPages: ", totalPages);
   for (let num = 1; num <= totalPages; num++) {
     pages.push(
       <li key={num} className="page-item">
-        <a className="page-link" href="#1">
+        <a className="page-link" href="!#" onClick={handleOnClick}>
           {num}
+
         </a>
       </li>
     );
