@@ -15,12 +15,15 @@ function App() {
   const [homeworldName, setHomeworldName] = useState([]);
   const [speciesName, setSpeciesName] = useState([]);
   const [loading, setloading] = useState(false);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
-   
       const response = await axios.get("https://swapi.dev/api/people");
-      setloading(true)
+      setloading(true);
+
+      console.log("COUNT: ", response.data.count);
+      setCount(response.data.count.length);
 
       for (let index = 0; index < response.data.results.length; index++) {
         const character = response.data.results[index];
@@ -37,17 +40,17 @@ function App() {
           character.species = "Human";
         } else {
           const species = await axios.get(speciesURL);
-       
+
           character.species = species.data.name;
         }
       }
-      setloading(false)
+      setloading(false);
       setCharacters(response.data.results);
     };
 
     getData();
   }, []);
-  console.log(homeworldName)
+  console.log(homeworldName);
 
   /*  useEffect(() => {
     // 1
@@ -81,8 +84,8 @@ function App() {
 
   useEffect(() => {
     console.log("characters", characters);
-    console.log("homeworldName", homeworldName); 
-    console.log("species",speciesName);
+    console.log("homeworldName", homeworldName);
+    console.log("species", speciesName);
   }, [characters, homeworldName, speciesName]);
 
   return (
@@ -92,9 +95,9 @@ function App() {
         characters={characters}
         homeworldName={homeworldName}
         speciesName={speciesName}
-       
       />
-      <Pagination  />
+      <Pagination count={count} 
+    />
     </div>
   );
 }
