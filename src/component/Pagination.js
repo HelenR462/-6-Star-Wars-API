@@ -3,19 +3,26 @@ import React, { useState } from "react";
 function Pagination({ count, currentPage, setCurrentPage }) {
   const [perPageCount] = useState(10);
 
-  const lastPage = currentPage * perPageCount;
-  const firstPage = lastPage - perPageCount;
+  // const lastPage = currentPage * perPageCount;
+  // const firstPage = lastPage - perPageCount;
   const totalPages = Math.ceil(count / perPageCount);
 
   const handleOnClick = (e) => {
     const num = Number(e.target.textContent);
-    setCurrentPage(pages)
+    setCurrentPage(pages.length);
     console.log("num : ", num);
   };
 
+  const previousPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
   let pages = [];
-  // console.log("pages: ", pages);
-  // console.log("totalPages: ", totalPages);
+
   for (let num = 1; num <= totalPages; num++) {
     pages.push(
       <li key={num} className="page-item">
@@ -25,24 +32,32 @@ function Pagination({ count, currentPage, setCurrentPage }) {
       </li>
     );
   }
-  // console.log(pages);
 
   return (
     <div>
       <nav aria-label="Page navigation example">
         <ul className="pagination">
           <li className="page-item">
-            <a className="page-link" href="#prev">
+            <button
+              className="page-link"
+              onClick={previousPage}
+              disabled={!previousPage}
+            >
               Previous
-            </a>
+            </button>
           </li>
 
           {pages}
 
           <li className="page-item">
-            <a className="page-link" href="#next">
+            <button
+              className="page-link"
+              herf="!#prev"
+              onClick={nextPage}
+              disabled={!nextPage}
+            >
               Next
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
