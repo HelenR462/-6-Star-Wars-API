@@ -49,14 +49,19 @@ input:focus::placeholder{
  li{
   border: solid rgb(220, 219, 219) 1px;
   width:fit-content;
-  background-color: rgb(209, 210, 212);
+  
+  background-color: rgb(209, 210, 212); 
  }
 
+ a{
+  padding: 2.45px 5px;
+ }
 .page-link{
   text-decoration: none;
   font-size:large;
   color: rgb(68, 67, 67);
- 
+  border-color: transparent;
+ background-color: transparent;
 }
 
 td{

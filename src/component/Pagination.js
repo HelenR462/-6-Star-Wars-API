@@ -1,35 +1,31 @@
 import React, { useState } from "react";
 
-function Pagination({ count }) {
-  const [currentPage, setCurrentPage] = useState(1);
-
-  console.log("currentPage :", currentPage);
+function Pagination({ count, currentPage, setCurrentPage }) {
   const [perPageCount] = useState(10);
 
   const lastPage = currentPage * perPageCount;
   const firstPage = lastPage - perPageCount;
-  const totalPages = Math.ceil(count/ perPageCount);
+  const totalPages = Math.ceil(count / perPageCount);
 
+  const handleOnClick = (e) => {
+    const num = Number(e.target.textContent);
+    setCurrentPage(pages)
+    console.log("num : ", num);
+  };
 
-  const handleOnClick=()=>{
-    pages(Number)
- }
-
-
-  let pages = []
+  let pages = [];
   // console.log("pages: ", pages);
   // console.log("totalPages: ", totalPages);
   for (let num = 1; num <= totalPages; num++) {
     pages.push(
       <li key={num} className="page-item">
-        <a className="page-link" href="!#" onClick={handleOnClick}>
+        <button className="page-link" onClick={handleOnClick}>
           {num}
-
-        </a>
+        </button>
       </li>
     );
   }
-  console.log(pages);
+  // console.log(pages);
 
   return (
     <div>

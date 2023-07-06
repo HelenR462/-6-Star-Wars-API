@@ -15,14 +15,15 @@ function App() {
   const [homeworldName, setHomeworldName] = useState([]);
   const [speciesName, setSpeciesName] = useState([]);
   const [loading, setloading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("https://swapi.dev/api/people");
+      const response = await axios.get("https://swapi.dev/api/people/?page=" + currentPage);
       setloading(true);
 
-      console.log("COUNT: ", response.data.count);
+      // console.log("COUNT: ", response.data.count);
       setCount(response.data.count);
 
       for (let index = 0; index < response.data.results.length; index++) {
@@ -46,11 +47,12 @@ function App() {
       }
       setloading(false);
       setCharacters(response.data.results);
+    
     };
 
     getData();
-  }, []);
-  console.log(homeworldName);
+  }, [currentPage]);
+  // console.log(homeworldName);
 
   /*  useEffect(() => {
     // 1
@@ -82,11 +84,11 @@ function App() {
     console.log('andy');
   }, []); */
 
-  useEffect(() => {
-    console.log("characters", characters);
-    console.log("homeworldName", homeworldName);
-    console.log("species", speciesName);
-  }, [characters, homeworldName, speciesName]);
+  // useEffect(() => {
+  //   // console.log("characters", characters);
+  //   // console.log("homeworldName", homeworldName);
+  //   // console.log("species", speciesName);
+  // }, [characters, homeworldName, speciesName]);
 
   return (
     <div>
@@ -96,7 +98,10 @@ function App() {
         homeworldName={homeworldName}
         speciesName={speciesName}
       />
-      <Pagination count={count} 
+      <Pagination 
+      count={count} 
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
       
     />
     </div>
