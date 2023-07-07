@@ -1,16 +1,9 @@
 import React from "react";
 
 function CharacterSearch() {
- 
   const handleOnClick = (e) => {
     e.preventDefault();
-   
   };
-
-  const handleOnChange = (e) => {
-   
-  };
-
 
   return (
     <div>
@@ -20,11 +13,8 @@ function CharacterSearch() {
       <div className="input-group input-group-lg">
         <input
           type="text"
-          
           className="form-control"
-          onChange={handleOnChange}
           placeholder="Welcome to Star Wars World!"
-          // onFocus=""
         ></input>
         <button
           className="btn btn-outline-secondary"

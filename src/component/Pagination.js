@@ -8,23 +8,20 @@ function Pagination({ count, currentPage, setCurrentPage }) {
   const totalPages = Math.ceil(count / perPageCount);
 
   const handleOnClick = (e) => {
-    //      2
+ 
     const num = Number(e.target.textContent);
-
     setCurrentPage(num);
-    console.log("num : ", num);
+   
   };
 
   const prevOnClick = () => {
-    // if currentpage is equal to 1, then return
-    setCurrentPage(currentPage - 1);
+      setCurrentPage(currentPage - 1);
     if (firstPage === 1 ? currentPage : "") {
     }
   };
 
   const nextOnClick = () => {
-    // if currentpage is equal to 9, then return
-    setCurrentPage(currentPage + 1);
+       setCurrentPage(currentPage + 1);
     if (currentPage === totalPages ? lastPage : "");
   };
 

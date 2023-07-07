@@ -1,9 +1,6 @@
 import React from "react";
 
-function characterData({ characters, search,setSearch}) {
- 
-
- 
+function characterData({ characters }) {
   return (
     <table className="table table-border">
       <thead>
@@ -16,24 +13,19 @@ function characterData({ characters, search,setSearch}) {
           <th scope="col">Species</th>
         </tr>
       </thead>
-    
-        <tbody>
-         {/* {characters.filter((character) =>{
-          return search.characters === '' ? character :character.includes(search)
-          
-         }) */}
-        { characters.map((character, index) => (
-           <tr key={index}>
-             <td>{character.name}</td>
-             <td>{character.birth_year}</td>
-             <td>{character.height}</td>
-             <td>{character.mass}</td>
-             <td>{character.homeworld}</td>
-             <td>{character.species}</td>
-           </tr>
-         ))}
-       </tbody>
- 
+
+      <tbody>
+        {characters.map((character, index) => (
+          <tr key={index}>
+            <td>{character.name}</td>
+            <td>{character.birth_year}</td>
+            <td>{character.height}</td>
+            <td>{character.mass}</td>
+            <td>{character.homeworld}</td>
+            <td>{character.species}</td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 }
