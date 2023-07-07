@@ -5,7 +5,7 @@ import Pagination from "./component/Pagination";
 import axios from "axios";
 import "./App.css";
 
-
+// andy rocks!
 function App() {
   const [characters, setCharacters] = useState([]);
   const [homeworldName] = useState([]);
