@@ -7,11 +7,6 @@ function CharacterSearch() {
    
   };
 
-  const handleOnChange = (e) => {
-   
-  };
-
-
   return (
     <div>
       <header className="header">
@@ -24,7 +19,7 @@ function CharacterSearch() {
           className="form-control"
           onChange={handleOnChange}
           placeholder="Welcome to Star Wars World!"
-          // onFocus=""
+       
         ></input>
         <button
           className="btn btn-outline-secondary"

@@ -3,22 +3,24 @@ import React, { useState } from "react";
 function Pagination({ count, currentPage, setCurrentPage }) {
   const [perPageCount] = useState(10);
 
-  // const lastPage = currentPage * perPageCount;
-  // const firstPage = lastPage - perPageCount;
+  const lastPage = currentPage * perPageCount;
+  const firstPage = lastPage - perPageCount;
   const totalPages = Math.ceil(count / perPageCount);
 
   const handleOnClick = (e) => {
     const num = Number(e.target.textContent);
-    setCurrentPage(pages.length);
-    console.log("num : ", num);
+    setCurrentPage(num);
+
   };
 
-  const previousPage = () => {
+  const prevOnClick = () => {
     setCurrentPage(currentPage - 1);
+    if (firstPage === 1 ? currentPage : "");
   };
 
-  const nextPage = () => {
+  const nextOnClick = () => {
     setCurrentPage(currentPage + 1);
+    if (currentPage === totalPages ? lastPage : "");
   };
 
   let pages = [];
@@ -40,8 +42,8 @@ function Pagination({ count, currentPage, setCurrentPage }) {
           <li className="page-item">
             <button
               className="page-link"
-              onClick={previousPage}
-              disabled={!previousPage}
+              onClick={prevOnClick}
+
             >
               Previous
             </button>
@@ -53,8 +55,8 @@ function Pagination({ count, currentPage, setCurrentPage }) {
             <button
               className="page-link"
               herf="!#prev"
-              onClick={nextPage}
-              disabled={!nextPage}
+              onClick={nextOnClick}
+
             >
               Next
             </button>
