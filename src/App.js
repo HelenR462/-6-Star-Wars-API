@@ -5,7 +5,6 @@ import Pagination from "./component/Pagination";
 import axios from "axios";
 import "./App.css";
 
-
 function App() {
   const [characters, setCharacters] = useState([]);
   const [homeworldName] = useState([]);
@@ -18,7 +17,7 @@ function App() {
       const response = await axios.get(
         "https://swapi.dev/api/people/?page=" + currentPage
       );
-   
+
       setCount(response.data.count);
 
       for (let index = 0; index < response.data.results.length; index++) {
@@ -43,7 +42,7 @@ function App() {
     };
 
     getData();
-  }, [currentPage, setCurrentPage]);
+  }, [currentPage]);
 
   return (
     <div>

@@ -3,22 +3,29 @@ import React, { useState } from "react";
 function Pagination({ count, currentPage, setCurrentPage }) {
   const [perPageCount] = useState(10);
 
-  // const lastPage = currentPage * perPageCount;
-  // const firstPage = lastPage - perPageCount;
+  const lastPage = currentPage * perPageCount;
+  const firstPage = lastPage - perPageCount;
   const totalPages = Math.ceil(count / perPageCount);
 
   const handleOnClick = (e) => {
+    //      2
     const num = Number(e.target.textContent);
-    setCurrentPage(pages.length);
+
+    setCurrentPage(num);
     console.log("num : ", num);
   };
 
-  const previousPage = () => {
+  const prevOnClick = () => {
+    // if currentpage is equal to 1, then return
     setCurrentPage(currentPage - 1);
+    if (firstPage === 1 ? currentPage : "") {
+    }
   };
 
-  const nextPage = () => {
+  const nextOnClick = () => {
+    // if currentpage is equal to 9, then return
     setCurrentPage(currentPage + 1);
+    if (currentPage === totalPages ? lastPage : "");
   };
 
   let pages = [];
@@ -38,11 +45,7 @@ function Pagination({ count, currentPage, setCurrentPage }) {
       <nav aria-label="Page navigation example">
         <ul className="pagination">
           <li className="page-item">
-            <button
-              className="page-link"
-              onClick={previousPage}
-              disabled={!previousPage}
-            >
+            <button className="page-link" onClick={prevOnClick}>
               Previous
             </button>
           </li>
@@ -50,12 +53,7 @@ function Pagination({ count, currentPage, setCurrentPage }) {
           {pages}
 
           <li className="page-item">
-            <button
-              className="page-link"
-              herf="!#prev"
-              onClick={nextPage}
-              disabled={!nextPage}
-            >
+            <button className="page-link" herf="!#prev" onClick={nextOnClick}>
               Next
             </button>
           </li>
