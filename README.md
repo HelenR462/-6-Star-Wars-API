@@ -4,7 +4,7 @@
 
 <br>
 
-Try it [here](https://github.com/HelenR462/-6-Star-Wars-API.git)
+Try it [here](https://master--astonishing-haupia-eb63f4.netlify.app/))
 <br>
 
 <img src="image/star-wars-api.png">
