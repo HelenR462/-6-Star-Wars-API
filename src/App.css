@@ -7,15 +7,13 @@ body {
  h1{
    color:rgb(226, 165, 12);
    text-align: center;
-   
- }
+    }
 
  th {
   color:rgb(226, 165, 12);
   margin-top: 10%;
   padding: 5px;
- 
- }
+  }
 
  .table.table.table-border{
   margin-left: 33.5%;
@@ -24,9 +22,7 @@ body {
  .input-group.input-group-lg{
     margin-left: 41%;
     margin-bottom: 1%;
- 
-
- }
+  }
 
 input:focus::placeholder{
   color:transparent;
