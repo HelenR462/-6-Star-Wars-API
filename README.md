@@ -7,7 +7,7 @@
 Try it [here](https://master--astonishing-haupia-eb63f4.netlify.app/))
 <br>
 
-<img src="./star-wars-api.png">
+<img src="star-wars-api.png">
 
 ## Summary 
  Coming soon...
