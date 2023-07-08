@@ -18,4 +18,3 @@ Try it [here](https://github.com/HelenR462/-6-Star-Wars-API.git)
 
 -   **Helen M. Naizghi-Redae** - _Full-Stack Software Developer_ - [Website](https://helenmnaizghi-redae.com) | [LinkedIn](https://www.linkedin.com/in/helen-r-5122181a2)
 
-
