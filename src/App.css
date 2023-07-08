@@ -12,28 +12,20 @@ body {
 
  th {
   color:rgb(226, 165, 12);
+  margin-top: 10%;
+  padding: 5px;
  
  }
 
- .row{
-  align-items: center;
-   text-align: center;
-   background-color: aliceblue;
-   color: rgb(0, 0, 0);
-   padding:5px;
-   margin-bottom: 20px;
+ .table.table.table-border{
+  margin-left: 33.5%;
  }
  
- .display-chart{
-  padding: 20px;
-  height:3vh;
- }
+ .input-group.input-group-lg{
+    margin-left: 41%;
+    margin-bottom: 1%;
  
- .input-group input-group-lg{
-  align-self: center;
-   justify-content: center;
-   
-    
+
  }
 
 input:focus::placeholder{
@@ -42,14 +34,12 @@ input:focus::placeholder{
 
  .data-item{
   background-color: aliceblue;
-  /* color:black; */
-  column-gap: 3px;
+  
  }
 
  li{
   border: solid rgb(220, 219, 219) 1px;
   width:fit-content;
-  
   background-color: rgb(209, 210, 212); 
  }
 
@@ -65,12 +55,12 @@ input:focus::placeholder{
 }
 
 td{
- width:5%;
- align-content: center;
- justify-content: center;
+ height: 5vh;
+ width: 5em;
  color:rgb(112, 112, 112);
- padding: 2px 10px;
+text-align:center;
  background-color: rgb(209, 210, 212);
+
 }
 
  .page-item{
@@ -81,12 +71,12 @@ td{
 
  }
 
- .page-item :hover{
-  color:rgb(41, 40, 40)
- }
 
- .pagenation{
+ .pagination{
   display:flex;
   justify-content: center;
-  width:100%
+  width:100%;
+ }
+.page-item:hover{
+  background-color:rgb(163, 161, 161)
  }
