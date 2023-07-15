@@ -1,62 +1,68 @@
 import React, { useState, useEffect } from "react";
 import CharacterSearch from "./component/CharacterSearch";
 import CharacterData from "./component/CharacterData";
-import Pagination from "./component/Pagination";
 import axios from "axios";
 import "./App.css";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [homeworldName] = useState([]);
-  const [speciesName] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [count, setCount] = useState(0);
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get(
-        "https://swapi.dev/api/people/?page=" + currentPage
-      );
+   fetchCharacterData();
+  },[]);
 
-      setCount(response.data.count);
+  async function fetchCharacterData() {
+    const characterPages = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    const speciesPages = [1, 2, 3, 4]
+    const planetPages = [1, 2, 3, 4, 5, 6]
+  
+    const characters = await Promise.all(characterPages.map(async (page) =>{
+          const response = await axios.get('https://swapi.py4e.com/api/people/?page=${page}')
+          return response.data.results
+      })).flat()
 
-      for (let index = 0; index < response.data.results.length; index++) {
-        const character = response.data.results[index];
+      const species = await Promise.all(speciesPages.map(async (page) =>{
+        const response = await axios.get('https://swapi.dev/api/species/?page=${page}')
+        return response.data.results
+    })).flat()
+     
+    const planets = await Promise.all(planetPages.map(async (page) =>{
+      const response = await axios.get('https://swapi.dev/api/planets/?page=${page}')
+      return response.data.results
+  })).flat()
 
-        const homeworld = response.data.results[index].homeworld;
-        const planet = await axios.get(homeworld);
-        character.homeworld = planet.data.name;
+  species = arrayToObj(species);
+  planets = arrayToObj(planets);
 
-        const speciesURL = response.data.results[index].species;
+  for(const char of characters){
+    char.homeworld = planets[char.homeworld]
+    char.species = char.species.length === 0 ? 'Human' : species[char.species[0]]
+  }
 
-        if (speciesURL.length === 0) {
-          character.species = "Human";
-        } else {
-          const species = await axios.get(speciesURL);
+  setCharacters(characters)
 
-          character.species = species.data.name;
-        }
-      }
+  }
 
-      setCharacters(response.data.results);
-    };
-
-    getData();
-  }, [currentPage]);
+function arrayToObj(array){
+  let obj = {};
+  for (let item of array) {
+    obj[item['url']] = item['name']
+  }
+  return obj;
+}
 
   return (
     <div>
-      <CharacterSearch />
+      <CharacterSearch 
+      search={search}
+      setSearch={setSearch}
+      />
       <CharacterData
         characters={characters}
-        homeworldName={homeworldName}
-        speciesName={speciesName}
+        search={search}
       />
-      <Pagination
-        count={count}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+     
     </div>
   );
 }

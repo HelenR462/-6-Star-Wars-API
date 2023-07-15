@@ -1,62 +1,20 @@
-import React, { useState } from "react";
+import ReactPaginate from "react-paginate";
 
-function Pagination({ count, currentPage, setCurrentPage }) {
-  const [perPageCount] = useState(10);
+function Pagination({ characters, setCurrentPage }) {
+  const count = Math.ceil(characters.length / 10);
 
-  const lastPage = currentPage * perPageCount;
-  const firstPage = lastPage - perPageCount;
-  const totalPages = Math.ceil(count / perPageCount);
-
-  const handleOnClick = (e) => {
- 
-    const num = Number(e.target.textContent);
-    setCurrentPage(num);
-   
-  };
-
-  const prevOnClick = () => {
-      setCurrentPage(currentPage - 1);
-    if (firstPage === 1 ? currentPage : "") {
-    }
-  };
-
-  const nextOnClick = () => {
-       setCurrentPage(currentPage + 1);
-    if (currentPage === totalPages ? lastPage : "");
-  };
-
-  let pages = [];
-
-  for (let num = 1; num <= totalPages; num++) {
-    pages.push(
-      <li key={num} className="page-item">
-        <button className="page-link" onClick={handleOnClick}>
-          {num}
-        </button>
-      </li>
-    );
+  function changePage({ selected }) {
+    setCurrentPage(selected);
   }
 
   return (
-    <div>
-      <nav aria-label="Page navigation example">
-        <ul className="pagination">
-          <li className="page-item">
-            <button className="page-link" onClick={prevOnClick}>
-              Previous
-            </button>
-          </li>
-
-          {pages}
-
-          <li className="page-item">
-            <button className="page-link" herf="!#prev" onClick={nextOnClick}>
-              Next
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <ReactPaginate
+      previousLabel={"Prev"}
+      nextLabel={"Next"}
+      pageCount={count}
+      onPageChange={changePage}
+      containerClassName={"button-container"}
+    />
   );
 }
 

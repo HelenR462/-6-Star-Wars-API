@@ -1,7 +1,16 @@
-import React from "react";
+import React,{ useState } from "react";
+import Pagination from "./Pagination";
 
-function characterData({ characters }) {
+
+function CharacterData({ characters, search }) {
+  const [currentPage, setCurrentPage] = useState(0);
+  const characterPerPage = 10;
+  const charactersViewed = currentPage * characterPerPage;
+
+
+
   return (
+    <>
     <table className="table table-border">
       <thead>
         <tr className="chart">
@@ -15,7 +24,13 @@ function characterData({ characters }) {
       </thead>
 
       <tbody>
-        {characters.map((character, index) => (
+        {characters.filter((val) =>{
+          if(val.name.includes(search)){
+            return val;
+          }else{
+            return null;
+          }
+        }).slice(charactersViewed, charactersViewed + characterPerPage).map((character, index) => (
           <tr key={index}>
             <td>{character.name}</td>
             <td>{character.birth_year}</td>
@@ -27,7 +42,12 @@ function characterData({ characters }) {
         ))}
       </tbody>
     </table>
+     <Pagination
+     characters={characters}
+     setCurrentPage={setCurrentPage}
+     />
+     </>
   );
 }
 
-export default characterData;
+export default CharacterData;

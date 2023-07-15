@@ -42,6 +42,7 @@ input:focus::placeholder{
  a{
   padding: 2.45px 5px;
  }
+
 .page-link{
   text-decoration: none;
   font-size:large;
@@ -67,12 +68,12 @@ text-align:center;
 
  }
 
-
  .pagination{
   display:flex;
   justify-content: center;
   width:100%;
  }
+ 
 .page-item:hover{
   background-color:rgb(163, 161, 161)
  }

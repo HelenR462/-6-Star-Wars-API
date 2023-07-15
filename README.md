@@ -7,14 +7,13 @@
 Try it [here](https://github.com/HelenR462/-6-Star-Wars-API.git)
 <br>
 
-<img src="image/star-wars-api.png">
+<img src="star-wars-api.png">
 
 ## Summary 
- Coming soon...
+ This project is created using npm create-react-app. I learned how to fetch data from an independent third party source, Swapi , and organize it with the pagination feature to retrieve easily. Testing with Postman, in extracting specific data, made it easier to understand what end point is aimed at targetting. 
 
-
-
-## Author
+ ## Author
 
 -   **Helen M. Naizghi-Redae** - _Full-Stack Software Developer_ - [Website](https://helenmnaizghi-redae.com) | [LinkedIn](https://www.linkedin.com/in/helen-r-5122181a2)
+
 
