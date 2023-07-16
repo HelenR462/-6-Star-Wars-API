@@ -1,9 +1,6 @@
 import React from "react";
 
-function CharacterSearch({search, setSearch}) {
- 
-  
-
+function CharacterSearch({ search, setSearch }) {
   return (
     <div>
       <header className="header">
@@ -17,7 +14,6 @@ function CharacterSearch({search, setSearch}) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         ></input>
-        
       </div>
     </div>
   );
