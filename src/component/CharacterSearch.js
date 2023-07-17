@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function CharacterSearch({ search, setSearch }) {
   return (
     <div>

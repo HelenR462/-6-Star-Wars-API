@@ -14,6 +14,7 @@ function Pagination({ characters, setCurrentPage }) {
       pageCount={count}
       onPageChange={changePage}
       containerClassName={"button-container"}
+     
     />
   );
 }
